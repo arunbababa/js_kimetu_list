@@ -15,9 +15,7 @@ const handleLoading = ((isLoading) => {
     }
 })
 
-// 全キャラクター
-const ALL_RADIO = document.getElementById('all');
-ALL_RADIO.addEventListener('click', async () => {
+const fetchAllCharacter = async () => {
     handleLoading(true)
     try {
         const res = await fetch('https://ihatov08.github.io/kimetsu_api/api/all.json');
@@ -40,7 +38,12 @@ ALL_RADIO.addEventListener('click', async () => {
     } finally {
         handleLoading(false)
     }
-});
+}
+
+// 全キャラクター
+const ALL_RADIO = document.getElementById('all');
+window.addEventListener('DOMContentLoaded', fetchAllCharacter);
+ALL_RADIO.addEventListener('click', fetchAllCharacter);
 
 // 鬼殺隊
 const DEVILHUNTER_RADIO = document.getElementById('devil-hunter');
